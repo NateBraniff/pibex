@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: pibex
+Version: 0.0.1
+Summary: A package for optimal Bayesian GLM response surface designs
+Home-page: https://github.com/NateBraniff/pibex
+Author: Nate Braniff
+Author-email: nate.braniff@gmail.com
+License: LGPLv3+
+Description: # pibex
+        
+Keywords: Bayesian,Response Surface,Optimization,Optimal,Experimental,Design
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6.1
+Description-Content-Type: text/markdown
