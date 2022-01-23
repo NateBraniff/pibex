@@ -1,7 +1,8 @@
-# NLoed Development Guide
+# pibex Development Guide
 
 This document summarizes the environment setup and some of the installation steps needed to contribute
-to development of the NLoed package. This guide is for UNIX-based operating systems, specifically
+to development of the pibex package. (This document was originally written for the pibex package but
+has been adapted for pibex.) This guide is for UNIX-based operating systems, specifically
 OSX or Ubuntu-like Linux distrobutions.
 
 If you have a Windows machine you can attempt to follow this guide very roughly using tools like [pyenv-win](https://github.com/pyenv-win/pyenv-win), however it may be easier to install something like VirtualBox and the latest Ubuntu release and do the development on a virtual machine.
@@ -71,7 +72,7 @@ dependencies and do a local install of the package for development.
 
 2. **Clone Git Repo into the Development Folder**
     You need to create a folder to contain the package files. You can do this in the file manager or
-    from the commandline, after which Git is used to clone the NLoed repository.
+    from the commandline, after which Git is used to clone the pibex repository.
     * Open Terminal
     * Navigate to where you want the development folder:
         ```sh
@@ -96,11 +97,11 @@ dependencies and do a local install of the package for development.
         ```
     * Clone the git repo (run in dev directory):
         ```sh
-        git clone https://github.com/NateBraniff/NLoed
+        git clone https://github.com/NateBraniff/pibex
         ```
 
 3. **Install Python and Dependencies in a Virtual Environment**
-    Using Pyenv we now install whichever version of Python we wish to use for development. NLoed was
+    Using Pyenv we now install whichever version of Python we wish to use for development. pibex was
     originally developed using Python 3.7.6 and this version is used below but you should upgrade 
     appropriatly as new Python versions are released.
 
@@ -120,13 +121,13 @@ dependencies and do a local install of the package for development.
         ```sh
         pip install -r requirements.txt
         ```
-    * Install NLoed Locally in Edit Mode (run in dev directory):
+    * Install pibex locally in Edit Mode (run in dev directory):
         ```sh
         pip install -e
         ```
 
 ## Testing with Pytest and Tox
-NLoed has been set up to use [Pytest](https://docs.pytest.org/en/stable/) for testing the package's classes and functions.
+pibex has been set up to use [Pytest](https://docs.pytest.org/en/stable/) for testing the package's classes and functions.
 [Tox](https://tox.readthedocs.io/en/latest/) is used to run the Pytest tests with various python versions and dependencies.
 These packages should be installed during the steps outlined above the the requirments.txt file.
 
@@ -150,7 +151,7 @@ These packages should be installed during the steps outlined above the the requi
         ```
 
 3. **Running Tox on OS/Linux/Windows**
-    It may be a good idea to test new releases using tox on various platforms.  Most of the code in NLoed -- in its initial release -- is platform independent but it is probably a good idea to continue to test from time to
+    It may be a good idea to test new releases using tox on various platforms.  Most of the code in pibex -- in its initial release -- is platform independent but it is probably a good idea to continue to test from time to
     time. This is somewhat complex and depends on what OS's and machines you have available, a rough
     guide is given below:
     * Install the various python versions listed in tox.ini.
@@ -166,19 +167,19 @@ These packages should be installed during the steps outlined above the the requi
     * Use pip to install tox and run it from the cloned repo
 
 ## Latex Documentation with Sphinx and Overleaf
-NLoed uses [Sphinx](https://www.sphinx-doc.org/en/master/) to automatically generate its function documentation that describes the package
+pibex uses [Sphinx](https://www.sphinx-doc.org/en/master/) to automatically generate its function documentation that describes the package
 contents and call structures in detail. Sphinx's output is a latex project which needs to be compiled
-in order to produce a PDF. A number of other latex projects are also included in NLoed's docs folder.
-NLoed's Github repo can be automatically linked to an Overleaf account to compile these latex projects.
+in order to produce a PDF. A number of other latex projects are also included in pibex's docs folder.
+pibex's Github repo can be automatically linked to an Overleaf account to compile these latex projects.
 Sphinx will already be installed along with the other development dependencies from requirments.txt.
 
 1. **Using Sphinx**
-    Sphinx is used to extract docstrings automatically from the NLoed source code. Sphinx can then generate
+    Sphinx is used to extract docstrings automatically from the pibex source code. Sphinx can then generate
     a latex project that can be compiled into a pdf listing all of the class function and call structures
-    documented in the NLoed source code. The exact content of the resulting document is controlled by
+    documented in the pibex source code. The exact content of the resulting document is controlled by
     the .rst files in docs/latex_sphinx_manual/source. The docs folder also contains other latex projects for
-    NLoed's other documentation. 
-    * The cloned NLoed repo should be able to run Sphinx by default. To (re)make the Sphinx latex project after any updates you can run in the latex_sphinx_manual directory:
+    pibex's other documentation. 
+    * The cloned pibex repo should be able to run Sphinx by default. To (re)make the Sphinx latex project after any updates you can run in the latex_sphinx_manual directory:
         ```sh
         make latex
         ```
@@ -189,16 +190,16 @@ Sphinx will already be installed along with the other development dependencies f
         ```sh
         make latex
         ```
-    * (Optional) If you add new modules to the NLoed project you will need to re-run the autodoc extension of Sphinx so that it can find the new code and docstrings. This will modify both nloed.rst and modules.rest (although the later isn't used by default). To do this run in the repo's root directory:
+    * (Optional) If you add new modules to the pibex project you will need to re-run the autodoc extension of Sphinx so that it can find the new code and docstrings. This will modify both pibex.rst and modules.rest (although the later isn't used by default). To do this run in the repo's root directory:
         ```sh
-        $ sphinx-apidoc -o docs/latex_sphinx_manual/source nloed
+        $ sphinx-apidoc -o docs/latex_sphinx_manual/source pibex
         ```
 
 2. **Linking and Compiling in Overleaf**
-    The latex projects in NLoed's docs folder need to be compiled in order to generate readable PDFs
+    The latex projects in pibex's docs folder need to be compiled in order to generate readable PDFs
     that can (and should) be updated and included in the Github repository. Compiling these documents on
     your machine can be a pain, unless you've settup an easy way to install all of the required latex
-    packages. To make things easier you can link NLoed's Github repo to an Overleaf account and overleaf
+    packages. To make things easier you can link pibex's Github repo to an Overleaf account and overleaf
 
     * You can link Github and Overleaf by following these guides:
         * https://www.overleaf.com/learn/how-to/Using_Git_and_GitHub
@@ -208,7 +209,7 @@ s
 
 ## Notebook Examples and the Example Pack
 
-The examples folder contains a collection of projects demonstrating some of the basic uses of NLoed.
+The examples folder contains a collection of projects demonstrating some of the basic uses of pibex.
 Each project has its own folder within the examples folder; projects currently include demonstrations
 on a hill function model, multiple linear regression, a multi-input/output non-normal model (similar
 to a generalized linear model), and a nonlinear ODE. 
@@ -216,12 +217,12 @@ to a generalized linear model), and a nonlinear ODE.
 The example projects consists of a set of Jupyter notebook (.pynb) files, each devoted to a specific
 task within the project. For example there are seperate notebooks for creating a model, designing 
 experiments and fitting a model. This is intended to provide new users with a modular and incremental
-introduction to using NLoed. 
+introduction to using pibex. 
 
 At the time of writing, Github will render these examples as notebooks in the online repository.
 This makes it useful for those browsing the repository to get a sense for how the package is used. 
 In order to run the notebooks on your local machine you will first need to clone the repository
-or download the examples folder and ensure that NLoed is installed. Installing Jupyter notebook can 
+or download the examples folder and ensure that pibex is installed. Installing Jupyter notebook can 
 be done using pip via the command:
 ```sh
 pip install notebook
@@ -254,7 +255,7 @@ Previous notebooks can then be linked to a current notebook by adding the follow
  ```
 
 ## Packaging and Release
-In order to make NLoed available using pip, it needs to be packaged properly and uploaded to the
+In order to make pibex available using pip, it needs to be packaged properly and uploaded to the
 PyPI repository. This involves creating a source and built distribution, followed uploading the resulting files.
 It is also a good idea to tag all releases to PyPI on the Github repo.
 
@@ -275,22 +276,22 @@ It is also a good idea to tag all releases to PyPI on the Github repo.
 
 3. **Uploading to PyPI using Twine**
     PyPI is the repository where pip installs packages from. [Twine](https://twine.readthedocs.io/en/latest/) is the tool used to upload python
-    packages to the repository. In order to update the NLoed package on PyPI the user must have the 
+    packages to the repository. In order to update the pibex package on PyPI the user must have the 
     appropriate credentials (i.e. password or key). PyPI also maintains a test repository for experimenting
     with the packaging process. The standard and test repo are completely indpendent and may not
     have the same packages or version and require seperate accounts.
 
-    * Upload NLoed to the PyPI Repository:
+    * Upload pibex to the PyPI Repository:
         ```sh
         twine upload dist/*
         ```
-    * (Optional) Upload NLoed to the PyPI Test Repository:
+    * (Optional) Upload pibex to the PyPI Test Repository:
         ```sh
         twine upload --repository testpypi dist/*
         ```
     * (Optional) Installing from the PyPI Test Repository:
         ```sh
-        pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple nloed
+        pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple pibex
         ```
         (dependencies are install from the regular pip repo)
 

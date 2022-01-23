@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 
-class model():
-    """Model class for the pibex package."""
+class Model():
+    """Model class for the pibex package"""
 
     def __init__(self, f, link, dist):
         """Constructor for the pibex model class"""
