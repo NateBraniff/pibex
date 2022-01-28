@@ -20,6 +20,7 @@ setuptools.setup(
         'numpy>=1.17.0',
         'pandas>=1.0.0',
         'matplotlib',
+        'patsy>=0.5.2'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
