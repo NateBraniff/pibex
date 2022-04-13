@@ -1,26 +1,28 @@
 import numpy as np
 import pandas as pd
+#import pystan as pst
+import bambi as bm
 
-class Model():
-    """Model class for the pibex package"""
 
-    def __init__(self, f, nf, link, ilink, dist):
-        """Constructor for the pibex model class"""
-        self.f = f
-        self.link = link
-        self.dist = dist
-        self.param = np.zeros(nf)
+#%%
+class Model:
+     
+    def __init__(self,formula,link="identity"):
+        
+        self.formula = formula
+        
+    def fit(self,data):
 
-    def simulate(self, x):
-        """pibex function for simulating data"""
+        self.mod = bm.Model(self.formula,data)
+        self.idata = self.mod.fit(draws=3000, cores=1)
 
-        #compute design matrix
-        F = x.apply(self.f,axis='index',result_type='expand')
-        #dot design matrix with params
-        FB = F.dot(self.param)
-        #compute expected mu
-        u = self.ilink(FB)
+        return self.idata
 
-        return u
+    def simulate(self,data):
+
+        sim_data = self.mod.predict(self.idata,kind='pps',data=data,inplace=False)
+
+        return sim_data
+
 
 
